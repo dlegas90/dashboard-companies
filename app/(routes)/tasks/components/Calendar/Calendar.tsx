@@ -62,7 +62,8 @@ export function Calendar(props: CalendarProps) {
         })
         setOnSaveNewEvent(false)
     }
-  }, [onSaveNewEvent, selectedItem])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onSaveNewEvent, selectedItem, events])
   /* ERROR, el event está deprecado, igual lo dejé */
   /* No funciona el borrar */
   const handleEventClick = async (selected: any) => {
