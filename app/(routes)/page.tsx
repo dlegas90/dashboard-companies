@@ -8,7 +8,7 @@ import { SalesDistributor } from "./components/SalesDistributors"
 import { ListIntegrations } from "./components/ListIntegrations"
 
 
-export const dataCardSummary = [
+const dataCardSummary = [
     {
     icon: UsersRound,
     total: "12.450",
