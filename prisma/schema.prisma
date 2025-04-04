@@ -53,18 +53,34 @@ model Contact {
   @@index(comapnyId)
 }
 
-model Event{
-  id String @id @default(uuid())
-  companyId String
-  title String
-  start DateTime 
-  allDay Boolean
+// model Event{
+//   id String @id @default(uuid())
+//   companyId String
+//   title String
+//   start DateTime 
+//   allDay Boolean
+//   timeFormat String
+
+//   company Company @relation(fields: [companyId], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updateAt DateTime @updatedAt
+
+  
+// }
+
+model Event {
+  id        Int      @id @default(autoincrement())
+  companyId String   
+  title     String
+  start     DateTime
+  allDay    Boolean
   timeFormat String
 
-  company Company @relation(fields: [companyId], references: [id])
-
+  company   Company  @relation(fields: [companyId], references: [id])
   createdAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  updateAt  DateTime @updatedAt
 
   @@index(companyId)
 }
+

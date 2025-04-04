@@ -11,10 +11,19 @@ import { DateSelectArg, EventContentArg } from "@fullcalendar/core/index.js"
 import axios from "axios";
 import { formatDate } from "@/lib/formatDate"
 import { useToast } from "@/hooks/use-toast"
-import { CalendarProps } from "./Calendar.types";
+// import { CalendarProps } from "./Calendar.types";
 import { ModalAddEvent } from "../ModalAddEvent/ModalAddEvent";
-export function Calendar(props: CalendarProps) {
-  const {companies, events} = props
+
+import { Company, Event } from "@prisma/client";
+
+export type CalendarProps = {
+    companies: Company[];
+    events: Event[];
+};
+
+
+export function Calendar({ companies, events }: CalendarProps)  {
+  // const {companies, events} = props
   const { toast } = useToast()
   const router = useRouter()
   const [open, setOpen] = useState(false)
@@ -31,6 +40,14 @@ export function Calendar(props: CalendarProps) {
     setOpen(true)
     setSelectedItem(selected)
   }
+
+
+  const calendarEvents = events.map((event) => ({
+    ...event,
+    id: String(event.id), 
+    start: new Date(event.start),
+}));
+
   useEffect(() => {
     if(onSaveNewEvent && selectedItem?.view.calendar) {
       const calendarApi = selectedItem.view.calendar
@@ -110,7 +127,7 @@ export function Calendar(props: CalendarProps) {
             height="80vh"
             initialView="dayGridMonth"
             weekends={false}
-            events={events}
+            events={calendarEvents}
             eventContent={renderEventContent}
             editable={true}
             selectable={true}
