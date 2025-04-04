@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/**/*", "components/Navbar", "components/Logo", "components/CustomTooltip", "components/ToggleTheme", "components/Sidebar", "components/SidebarItem", "components/SidebarRoutes"],
   "exclude": ["node_modules"]
 }
